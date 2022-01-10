@@ -1,0 +1,22 @@
+.tracksContainer {
+  min-height: 220px;
+}
+.albumImg {
+  width: 180px;
+}
+.albumTracks {
+  margin-top: 230px;
+}
+@media (max-width: 639px) {
+  .albumImage {
+    top: -200px;
+  }
+}
+@media (min-width: 640px) {
+  .sidepadding {
+    padding-left: 220px;
+  }
+  .albumTracks {
+    margin-top: 0;
+  }
+}
