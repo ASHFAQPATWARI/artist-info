@@ -30,7 +30,6 @@ export const fetchArtistsAsync = createAsyncThunk<IArtist[], string>(
   "counter/fetchArtists",
   async (query: string) => {
     const response = await fetchArtists(query);
-    // The value we return becomes the `fulfilled` action payload
     return response.data.artists.items;
   }
 );
@@ -44,13 +43,12 @@ export const fetchArtistAlbumsAsync = createAsyncThunk<IAlbum[], string>(
   "counter/fetchArtistAlbums",
   async (artistId: string) => {
     const response = await fetchArtistAlbums(artistId);
-    // The value we return becomes the `fulfilled` action payload
     return response.data.items;
   }
 );
 
 /**
- * Async thunk to fetch artists
+ * Async thunk to fetch album tracks
  * @param  {string} albumId - Album ID
  * @returns Albums[]
  */
@@ -58,7 +56,6 @@ export const fetchAlbumTracksAsync = createAsyncThunk<ITrack[], string>(
   "counter/fetchAlbumTracks",
   async (albumId: string) => {
     const response = await fetchAlbumTracks(albumId);
-    // The value we return becomes the `fulfilled` action payload
     return response.data.items;
   }
 );
@@ -91,24 +88,11 @@ export const artistsSlice = createSlice({
 
 export const { selectArtist, selectAlbum, resetSearch } = artistsSlice.actions;
 
-// The function below is called a selector and allows us to select a value from
-// the state. Selectors can also be defined inline where they're used instead of
-// in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
+//  Selectors go here. Move to separate file if there are too many of them
 export const selectSelectedArtist = (state: RootState) =>
   state.artistsInfo.selectedArtist;
 export const selectSelectedAlbum = (state: RootState) =>
   state.artistsInfo.selectedAlbum;
 export const selectStatus = (state: RootState) => state.artistsInfo.status;
-
-// We can also write thunks by hand, which may contain both sync and async logic.
-// Here's an example of conditionally dispatching actions based on current state.
-/* export const incrementIfOdd =
-  (amount: number): AppThunk =>
-  (dispatch, getState) => {
-    const currentValue = selectCount(getState());
-    if (currentValue % 2 === 1) {
-      dispatch(incrementByAmount(amount));
-    }
-  }; */
 
 export default artistsSlice.reducer;

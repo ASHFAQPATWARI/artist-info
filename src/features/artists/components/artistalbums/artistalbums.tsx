@@ -6,6 +6,7 @@ import {
 } from "features/artists/artistsSlice";
 import { IAlbum } from "interface/album";
 import React, { useEffect, useState } from "react";
+import AlbumCard from "./albumCard";
 
 export default function ArtistAlbums() {
   const selectedArtist = useAppSelector(selectSelectedArtist);
@@ -64,33 +65,5 @@ const AlbumsSlider = ({ albums }: IAlbumsSlider) => {
         ))}
       </div>
     </>
-  );
-};
-
-interface IAlbumCard {
-  album: IAlbum;
-  handleClick: (album: IAlbum) => void;
-}
-
-const AlbumCard = ({ album, handleClick }: IAlbumCard) => {
-  const image = album.images[0].url;
-  return (
-    <button
-      className="text-cyan-600 mr-6 mb-6 flex-none flex group"
-      onClick={() => handleClick(album)}
-    >
-      <div className="" style={{ maxWidth: "200px" }}>
-        <img
-          className="object-cover"
-          src={image}
-          alt=""
-          style={{ width: "200px", height: "200px" }}
-        />
-        <p className="my-2 text-xl">{album.name}</p>
-        <p className="invisible group-hover:visible text-xs">
-          Click for more info
-        </p>
-      </div>
-    </button>
   );
 };

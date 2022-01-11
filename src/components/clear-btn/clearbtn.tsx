@@ -4,6 +4,10 @@ export interface IClearBtn {
   onclick: () => void;
 }
 
+/**
+ * Component to show a clear btn
+ * @param  {Function} onclick - Callback function when button is clicked
+ */
 export default function Clearbtn({ onclick }: IClearBtn) {
   return (
     <button

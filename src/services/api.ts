@@ -14,8 +14,6 @@ const headers: Readonly<Record<string, string>> = {
   "Content-Type": "application/json; charset=utf-8",
 };
 
-// We can use the following function to inject the JWT token through an interceptor
-// We get the `accessToken` from the localStorage that we set when we authenticate
 const injectToken = (config: AxiosRequestConfig): AxiosRequestConfig => {
   try {
     const token = Storage.getToken();
@@ -95,6 +93,7 @@ class Http {
 
   // Handle global app errors
   // We can handle generic app errors depending on the status code
+  // Not implementing for demo sake
   private handleError(error: AxiosResponse) {
     const { status } = error;
 

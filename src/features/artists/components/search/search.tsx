@@ -36,7 +36,7 @@ export default function SearchArtists() {
     inputRef.current?.focus();
   };
 
-  // Fetch API (optional)
+  // Debounced value for not firing api calls on each change.
   useEffect(() => {
     const fetchArtists = async () => {
       if (debouncedValue !== "") {

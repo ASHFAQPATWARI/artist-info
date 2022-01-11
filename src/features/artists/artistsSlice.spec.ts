@@ -21,7 +21,7 @@ describe("counter reducer", () => {
     expect(actual.selectedArtist).toEqual(dummyArtist);
   });
 
-  it("should handle artist selection", () => {
+  it("Selected album should be reset when a new artist is selected", () => {
     const actual = artistsReducer(initialState, selectArtist(dummyArtist));
     expect(actual.selectedAlbum).toEqual(null);
   });
